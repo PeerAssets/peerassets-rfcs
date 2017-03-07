@@ -89,7 +89,13 @@ Why should we *not* do this?
 
 ## Alternatives
 
-What other designs have been considered? What is the impact of not doing this?
+* For the calculation of cards received on an expired address, it is considered to calculate the validity starting from the transaction time leaving an unsubscribed gap with the expiration time.
+However, this calculation would be slighly more complex and less obvious and transparant for client implementors.
+Therefore, simplicity is chosen and an extra incentive is created for increasing user privacy.
+
+* For the choice of the `SUBSCRIPTION` bitflags, a single unique bitflag is considered.
+However, a single flag would mean duplication of the existing flag logic for `MULTI` issuance.
+And choosing a combinatory flag allows the creation of the generic `UNFLUSHABLE` flag virtually for free.
 
 ## Unresolved questions
 
