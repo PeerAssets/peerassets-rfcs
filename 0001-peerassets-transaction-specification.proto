@@ -21,6 +21,11 @@ message DeckSpawn {
     ONCE   = 0x02; // Only one issuance transaction from asset owner allowed
     MULTI  = 0x04; // Multiple issuance transactions from asset owner allowed
     SINGLET = 0x08; // Single (one) card issued from asset owner allowed
+    UNFLUSHABLE  = 0x10; // No card transfer transactions allowed except for the card-issue transaction
+    // 0x20 used by SUBSCRIPTION (0x34 = 0x20 | 0x04 | 0x10)
+    SUBSCRIPTION = 0x34; // An address is subscribed to a service for X hours since the first received cards.
+                         // Where X is the asset balance of the address.
+                         // This mode automatically enables MULTI & UNFLUSHABLE (0x34 = 0x20 | 0x04 | 0x10)
   }
   uint32 issue_mode = 4;
 
