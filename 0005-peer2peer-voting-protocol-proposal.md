@@ -5,7 +5,7 @@
 - Start Date: 13-03-2017
 - Discussion: (fill me in with link to RFC discussion - shepherd will complete this)
 - Related components: 0005-peer2peer-voting-transaction-specification.proto
-- Author: peerchemist
+- Author: peerchemist, saeveritt
 
 ## Summary
 
@@ -40,13 +40,14 @@ Python code using pypeerassets:
 ```
 import pypeerassets as pa
 from hashlib import sha256
+from binascii import unhexlify
 
-asset_id = "d460651e1d9147770ec9d4c254bcc68ff5d203a86b97c09d00955fb3f714cab3".encode()
-deck_vote_tag_privkey = sha256(asset_id + "vote_init".encode()).hexdigest()
+asset_id = unhexlify("d460651e1d9147770ec9d4c254bcc68ff5d203a86b97c09d00955fb3f714cab3")
+deck_vote_tag_privkey = sha256(asset_id + b"vote_init").hexdigest()
 
-deck_vote_tag_address = pa.Kutil(network="tppc", privkey=vote_init_privkey).address
+deck_vote_tag_address = pa.Kutil(network="tppc", privkey=deck_vote_tag_privkey).address
 
-assert deck_vote_tag_address == "mtE3jLc8LtXGhrEQJksbmWd5KH4S5yQVrj"
+assert deck_vote_tag_address == "n116UKstnbrNJBdYHgx4UnAs9xYHVBczFs"
 ```
 
 ## Vote init
@@ -95,15 +96,16 @@ Bob calculates vote_cast address in Python using pypeerassets:
 ```
 import pypeerassets as pa
 from hashlib import sha256
+from binascii import unhexlify
 
-vote_init_txid = "b89c3a198f1b488fb972cb70f24dc7d21efbdebked941ae3ae82536c3951c7a1".encode()
-option_index = 2#vote_init["choices"].index("trump")
+vote_init_txid = unhexlify("b461051e1d9147770ec9d4c254bdd68ff5d203a86b97c09d00955fb3f088cab3")
+option_index = vote_init["choices"].index("trump") # 2
 
 vote_cast_privkey = sha256(vote_init_txid + bytes(option_index)).hexdigest()
 
 vote_cast_address = pa.Kutil(network="tppc", privkey=vote_cast_privkey).address
 
-assert vote_cast_address == "moNEVvdptv3qa2stvSaw48Wr1G9n88QUwR"
+assert vote_cast_address == "msCpEmB3m2sARUikdZSCgyoCokmXykD1de"
 
 ```
 
