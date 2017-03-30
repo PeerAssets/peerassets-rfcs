@@ -1,10 +1,10 @@
-# PeerAssets voting protocol specification
+# PeerAssets on-chain voting protocol specification
 
 - Status: proposed
 - Type: new feature
 - Start Date: 13-03-2017
 - Discussion: (fill me in with link to RFC discussion - shepherd will complete this)
-- Related components: 0005-peer2peer-voting-transaction-specification.proto
+- Related components: 0005-on-chain-voting-transaction-specification.proto
 - Author: peerchemist, saeveritt
 
 ## Summary
