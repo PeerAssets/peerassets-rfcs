@@ -114,8 +114,10 @@ All clients can deterministically calculate this address and check transactions 
 
 ## Vote counting
 
-Simplest form of vote counting is vote per transaction, with filtering of double votes and invalid votes.
-The only requisite of valid vote is positive card balance with this schema. However this schema is easily gamed, so two more complex schemas are proposed bellow.
+### Simple vote counting
+
+Simplest form of vote counting is counting one vote per transaction, with filtering of double votes and invalid votes. Filtering is done by using "first come, first served" rule, where only the first vote is registered and subsequent ones are dismissed as invalid.
+The only requisite of valid vote with this schema is positive card balance. However this schema is easily gamed by buying cards just before casting a vote and selling them after the vote has been casted, so two more complex voting schemes are proposed bellow.
 
 ### Weighting votes with PA card balance
 
