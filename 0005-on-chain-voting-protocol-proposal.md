@@ -139,14 +139,15 @@ Example:
     Option B wins.
 
 
-### Weightnig vote with PA card days
+### Weighting vote with PA card days
 
 Voting can also be weighted with so called "card days", as explained in PeerAssets whitepaper:
 ```
 Card age is a term derived from "coin age" used in Peercoin and it represents a product of quantity of the tokens and days they have been idle.
 In PeerAssets context card age is a product of the card balance and the time which card has spent being immovable with that address.
 ```
-This schema prevents "last minute" manipulations by giving more weight to older card holders.
+Therefor votes are counted as card days, card balance is multiplied with age of UTXO which was used to deliver the cards.
+This schema prevents "last minute" vote manipulations by giving more weight to older card holders.
 
 > Voting options are "A" and "B".
 
