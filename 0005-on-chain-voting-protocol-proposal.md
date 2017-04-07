@@ -121,8 +121,8 @@ The only requisite of valid vote with this schema is positive card balance. Howe
 
 ### Weighting votes with PA card balance
 
-This schema allows weighting vote with PeerAssets card balance. This allows equating casted vote with stake in the deck.
-Simplest form of card balance weighted voting is using card balance when summing up votes.
+This schema allows weighting the vote with PeerAssets card balance. This allows equating casted vote with stake in the PeerAssets deck.
+Simplest form of card balance weighted voting is using card balance when summing up votes. Same rule of "first come, first served" is applied to prevent double voting.
 
 Example:
 
