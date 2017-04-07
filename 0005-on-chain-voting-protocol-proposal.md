@@ -139,26 +139,6 @@ Example:
     Option B wins.
 
 
-#### Weighting vote with PA card balance with "lookback period"
-
-This scheme prevents actor to purchase cards during or just before the vote and them use them to cast weighted vote and then simply sell them.
-Lookback period schema can be applied to example above, where balance of cards is checked with lookback period of 10 blocks.
-
-> Voting options are "A" and "B", cut-off time is 10 blocks
-
-    Alice_card_balance = 40.0
-    Bob_card_balance = 80.0
-    David_card_balance = 27.0
-
-    Alice votes for option "A", while Bob and David vote "B".
-    Option A weight is 40
-    Option B weight is 107
-
-    Option B wins.
-
-
-In this example Alice tried to influence the vote by buying more cards after the vote begun, however those cards are not counted due to lookback period.
-
 ### Weightnig vote with PA card days
 
 Voting can also be weighted with so called "card days", as explained in PeerAssets whitepaper:
