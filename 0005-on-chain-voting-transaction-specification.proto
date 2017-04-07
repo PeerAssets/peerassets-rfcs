@@ -21,4 +21,6 @@ message Vote {
   // vote choices
   repeated string choices = 3;
 
+  // Free form asset specific data (optional)
+  bytes asset_specific_data = 4;
 }
