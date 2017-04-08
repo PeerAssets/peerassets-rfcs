@@ -11,7 +11,8 @@ message Vote {
 
   // Modes for card voting
   enum MODE {
-    SIMPLE = 0x00; // One vote per transaction
+    NONE = 0x00;
+    SIMPLE = 0x01; // One vote per transaction
     WEIGHT_CARD_BALANCE = 0x03; // (0x01 | 0x02) Weightning vote with PA card balance
     WEIGHT_CARD_DAYS = 0x07; //  (0x01 | 0x02 | 0x03) Weightnig vote with PA card days
   }
