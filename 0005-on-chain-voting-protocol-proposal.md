@@ -9,12 +9,9 @@
 
 ## Summary
 
-PeerAssets voting protocol.
-Aim is to deliver a standardized way to organize and operate peer-to-peer voting and opinion polls in fully decentralized and trustless fashion.
+PeerAssets on-chain voting protocol.
+Aim is to deliver a standardized way to organize and operate peer-to-peer voting and opinion polls in fully decentralized and trustless fashion. Both vote and poll initialization and counting must be done in completely decentralized and trustless fashion without dependency on 3rd party services.
 Voting is done in two phases, vote initialization (vote_init) and vote casting (vote_cast). 
-To enable voting on the deck, the deck issuer has to make first blank vote_init to deterministic P2TH address (deck_vote_tag) which will serve as vote tag of the deck in the future.
-This transaction is called deck_vote_init.
-Clients of the deck detect this and are now able to start votes or polls by tagging vote_inits with this address.
 Votes or polls can be started by anyone on the deck by creating vote_init transaction and paying to deck_vote_tag address. This transaction is called vote_init.
 Deck clients detect new votes or polls in progress by monitoring deck_vote_init address and participate in them by paying to their respective P2TH derived from vote_init. This transaction is called "vote_cast".
 
@@ -33,9 +30,9 @@ _______
 ## Deck vote tag
 
 Deck vote tag is deterministic P2TH address derived from sha256 hash of (asset_id + "vote_init") string and used as deck-level tag for all things voting.
-For example, for Peercoin-testnet based deck "hopium" asset_id is "d460651e1d9147770ec9d4c254bcc68ff5d203a86b97c09d00955fb3f714cab3" so vote_init address is derived from "c93c3a899f1b488fb972cb70f24dc7d22efddebced941ae3ae82336c3751a7a1" and equals "mtE3jLc8LtXGhrEQJksbmWd5KH4S5yQVrj".
+For example, for Peercoin-testnet based deck "hopium" asset_id is "d460651e1d9147770ec9d4c254bcc68ff5d203a86b97c09d00955fb3f714cab3" so vote_init address is derived from "c93c3a899f1b488fb972cb70f24dc7d22efddebced941ae3ae82336c3751a7a1" + "vote_init" and equals "mtE3jLc8LtXGhrEQJksbmWd5KH4S5yQVrj".
 
-Python code using pypeerassets:
+Python code for deriving deck_vote_tag using pypeerassets:
 
 ```
 import pypeerassets as pa
@@ -57,8 +54,9 @@ Vote init is special transaction sent to deck vote tag which announces the vote 
 * start block of the vote
 * end block of the vote
 * vote counting method (weighting with card balance, weighting with card-days, etc.)
-if vote count method has cutoff card-days or card balance, it needs to be included here.
 * choices of the vote/poll
+
+Vote init transaction pays to deck_vote_tag as first output.
 
 Example of information describing the vote_init:
 
@@ -77,12 +75,6 @@ vote_init = {
 Information describing the vote_init is attached as protobuf in the op_return output.
 
 Vote_init transaction can be sent by any party interested in the deck and and is understood by all clients subscribed to deck.
-
-### Deck vote init
-
-To enable voting on the deck, deck issuer has to make first blank vote_init and send it to deck_vote_tag.
-This transaction is called deck_vote_init.
-This transaction has to originate from the deck spawn address.
 
 
 ## Vote casting
