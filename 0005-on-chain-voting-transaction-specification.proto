@@ -9,6 +9,9 @@ message Vote {
   // voting protocol version number
   uint32 version = 1;
 
+  // description (keep short)
+  string description = 2;
+
   // Modes for card voting
   enum MODE {
     NONE = 0x00;
@@ -17,11 +20,11 @@ message Vote {
     WEIGHT_CARD_DAYS = 0x07; //  (0x01 | 0x02 | 0x03) Weightnig vote with PA card days
   }
 
-  uint32 count_mode = 2;
+  uint32 count_mode = 3;
 
   // vote choices
-  repeated string choices = 3;
+  repeated string choices = 4;
 
   // Free form asset specific data (optional)
-  bytes asset_specific_data = 4;
+  bytes asset_specific_data = 5;
 }
