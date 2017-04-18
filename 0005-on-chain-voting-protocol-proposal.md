@@ -144,18 +144,18 @@ This schema prevents "last minute" vote manipulations by giving more weight to o
 > Voting options are "A" and "B".
 
     Alice_card_balance = 102.0
-    Alice_card_days = 10
+    Alice_card_days = 20
     Bob_card_balance = 80.0
-    Bob_card_days = 100
+    Bob_card_days = 10
     David_card_balance = 27.0
     David_card_days = 10
 
-
     Alice votes for option "A", while Bob and David vote "B".
-    Option A weight is 1020.0
-    Option B weight is 8270.0
 
-    Option B wins.
+    Option A weight is 2040.0
+    Option B weight is 1070.0
+
+    Option A wins.
 
 
 ## Drawbacks
