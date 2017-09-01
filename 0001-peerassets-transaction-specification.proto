@@ -31,6 +31,12 @@ message DeckSpawn {
 
   // Free form asset specific data (optional)
   bytes asset_specific_data = 5;
+
+  // card transaction fee (optional)
+  // token amount to be burned upon each card transfer
+  // to be encoded as: fee * 10**number_of_decimals
+  // defaults to zero
+  uint32 fee = 6;
 }
 
 // Transaction data for:
