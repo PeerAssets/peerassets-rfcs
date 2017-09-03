@@ -20,17 +20,25 @@ message DeckSpawn {
     CUSTOM = 0x01; // Not specified, custom client implementation needed
     ONCE   = 0x02; // Only one issuance transaction from asset owner allowed
     MULTI  = 0x04; // Multiple issuance transactions from asset owner allowed
-    SINGLET = 0x08; // Single (one) card issued from asset owner allowed
+    MONO   = 0x08; // All card transaction amounts are equal to 1
     UNFLUSHABLE  = 0x10; // No card transfer transactions allowed except for the card-issue transaction
     // 0x20 used by SUBSCRIPTION (0x34 = 0x20 | 0x04 | 0x10)
     SUBSCRIPTION = 0x34; // An address is subscribed to a service for X hours since the first received cards.
                          // Where X is the asset balance of the address.
                          // This mode automatically enables MULTI & UNFLUSHABLE (0x34 = 0x20 | 0x04 | 0x10)
+    // SINGLET is a combination of ONCE and MONO (0x02 | 0x08)
+    SINGLET = 0x0a; // Singlet deck, one MONO card issunce allowed
   }
   uint32 issue_mode = 4;
 
   // Free form asset specific data (optional)
   bytes asset_specific_data = 5;
+
+  // card transaction fee (optional)
+  // token amount to be burned upon each card transfer
+  // to be encoded as: fee * 10**number_of_decimals
+  // defaults to zero
+  uint32 fee = 6;
 }
 
 // Transaction data for:
