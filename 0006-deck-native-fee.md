@@ -22,6 +22,24 @@ There is utility in having a deck native fee, notably as card transfer fees act 
 
 ## Detailed design
 
+There are three types of PeerAssets card transfer transaction:
+`card_issue` - new cards are being issued by the deck spawner,
+`card_burn` - cards are being destroyed by sending them back to deck spawn address,
+`card_transfer` - cards are being assigned to different address.
+
+Individual card is value transfer between Alice and Bob. For example: `{'sender': 'Alice', 'amount': 20, 'receiver': 'Bob'}`.
+
+Multiple card transfers (individual cards) can be contained within the single bundle. This is result of optimization of PeerAssets protocol which allows for packing multiple card transfers in the single transaction on the native blockchain.
+Multiple cards are packed into single transaction by pairing the two lists, one is the list of the vouts and second one is list of amounts encoded in the protobuf.
+
+vouts = ['PFZwE5Ws1vhgjcNpLPobbzFNYqfXWamUmo', 'PMgLWR35CWYAj5t4LDUHww18cgHKu8yVAD', 'PPbVj2nFLsSzkY9THVQVJqF2Wn6fbKjNgt']
+amounts = [20, 14.4, 116]
+
+When two lists above are paired, it's obvious that single card on index 0 is destined to `PFZwE5Ws1vhgjcNpLPobbzFNYqfXWamUmo` and carries a amount of 20. Sender is the sender of the transaction.
+
+Deck native fee requires all card transfer bundles to start with the card_burn transaction, that is it has to be addressed to deck issuer and amount has to be equal or larger than deck's native fee.
+
+
 ### Defining the fee parameter on deck spawn
 
 Native deck fee is equal to zero by default, and does not have to be specified in the deck spawning protobuf if issuer wants to keep default value of zero.
