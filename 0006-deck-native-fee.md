@@ -24,8 +24,8 @@ There is utility in having a deck native fee, notably as card transfer fees act 
 
 There are three types of PeerAssets card transfer transaction:
 `card_issue` - new cards are being issued by the deck spawner,
-`card_burn` - cards are being destroyed by sending them back to deck spawn address,
-`card_transfer` - cards are being assigned to different address.
+`card_burn` - cards are being destroyed by sending them back to the deck spawn address,
+`card_transfer` - cards are being assigned to different address(es).
 
 Individual card is value transfer between Alice and Bob. For example: `{'sender': 'Alice', 'amount': 20, 'receiver': 'Bob'}`.
 
