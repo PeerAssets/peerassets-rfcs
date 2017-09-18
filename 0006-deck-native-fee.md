@@ -27,7 +27,7 @@ There are three types of PeerAssets card transfer transaction:
 `card_burn` - cards are being destroyed by sending them back to the deck spawn address,
 `card_transfer` - cards are being assigned to different address(es).
 
-Individual card is value transfer between Alice and Bob. For example: `{'sender': 'Alice', 'amount': 20, 'receiver': 'Bob'}`.
+Individual card transfer is a value transfer between Alice and Bob. For example: `{'sender': 'Alice', 'amount': 20, 'receiver': 'Bob'}`.
 
 Multiple card transfers (individual cards) can be contained within the single bundle. This is result of optimization of PeerAssets protocol which allows for packing multiple card transfers in the single transaction on the native blockchain.
 Multiple cards are packed into single transaction by pairing the two lists, one is the list of the vouts and second one is list of amounts encoded in the protobuf.
