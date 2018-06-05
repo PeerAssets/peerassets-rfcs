@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+// PeerAssets voting protocol specification
+// written by peerchemist <peerchemist@protonmail.ch>
+
+// Identity message
+message Vote {
+
+  // voting protocol version number
+  uint32 version = 1;
+
+  // Modes for card voting
+  enum MODE {
+    SIMPLE = 0x00; // One vote per transaction
+    WEIGHT_CARD_DAYS = 0x01; // Weightnig vote with PA card days
+    WEIGHT_CARD_BALANCE = 0x02; // Weightning vote with PA card balance
+  }
+
+  uint32 count_mode = 2;
+
+  // vote choices
+  repeated string choices = 3;
+
+}
