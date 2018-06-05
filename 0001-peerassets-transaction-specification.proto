@@ -27,7 +27,7 @@ message DeckSpawn {
                          // Where X is the asset balance of the address.
                          // This mode automatically enables MULTI & UNFLUSHABLE (0x34 = 0x20 | 0x04 | 0x10)
     // SINGLET is a combination of ONCE and MONO (0x02 | 0x08)
-    SINGLET = 0x0a; // Singlet deck, one MONO card issunce allowed
+    SINGLET = 0x0a; // Singlet deck, one MONO card issunce allowed. (ONCE | MONO)
   }
   uint32 issue_mode = 4;
 
