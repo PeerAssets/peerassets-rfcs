@@ -54,8 +54,7 @@ For example, if card was issued directly to Alice:
 This is the first deck issue mode which requires extra metadata within the new, optional, rules field in the deckspawn protobuf. If no flags are provided in the rules field, cards expire after 0 blocks which makes them all invalid by default.
 
 ```
-rules=
-	  {
+rules={
 	   "number_of_blocks" = n
 	  }
 ```
@@ -69,13 +68,12 @@ Maximum number of "hops" (transfers) the card can do, counted from the issuer. F
 Example of deck_spawn for PERISH deck:
 
 ```
-deck_spawn =
-		 {
+deck_spawn = {
 		"version" : 1,
 		"name": "coupon",
 		"number_of_decimals": 0,
-		"issue_mode": MULTI, PERISH
-        "rules": {"n": 2}
+		"issue_mode": MULTI & PERISH,
+		"rules": {"n": 2}
 		}
 ```
 
