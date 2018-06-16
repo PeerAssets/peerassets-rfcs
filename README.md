@@ -143,5 +143,5 @@ present circumstances. As usual, we are trying to let the process be
 driven by consensus and community norms, not impose more structure than
 necessary.
 
-[issues]: https://github.com/peercoin/rfcs/issues
+[issues]: https://github.com/PeerAssets/peerassets-rfcs/issues
 [peercointalk]: https://www.peercointalk.org
